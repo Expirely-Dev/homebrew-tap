@@ -5,23 +5,23 @@ class Expirely < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/expirely-dev/expirely-cli/releases/download/v0.7.0/expirely_0.7.0_darwin_arm64.tar.gz"
-      sha256 "6de5bd27f4476de597e31211990a5ad69163ae88f7a449e5ba5c25b209da20fe"
+      url "https://github.com/expirely-dev/expirely-cli/releases/download/v0.8.0/expirely_0.8.0_darwin_arm64.tar.gz"
+      sha256 "1667165eb7c687123ef3a87e5b993af2961639c81b6f74db2e08553ac484a9f4"
     end
     on_intel do
-      url "https://github.com/expirely-dev/expirely-cli/releases/download/v0.7.0/expirely_0.7.0_darwin_amd64.tar.gz"
-      sha256 "e47fa0c2313769de40079159ec4bbbd2a28a0ef2e390745a8e89f8070ce1ef35"
+      url "https://github.com/expirely-dev/expirely-cli/releases/download/v0.8.0/expirely_0.8.0_darwin_amd64.tar.gz"
+      sha256 "b1ae7d4b568f0eda02f08eef41fd9ab50999543aa89dabaf01ae7bfef464ed30"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/expirely-dev/expirely-cli/releases/download/v0.7.0/expirely_0.7.0_linux_arm64.tar.gz"
-      sha256 "4dc28bf992a88697766ec15ba53e012d051274655575be5f72b1e90a174f48e1"
+      url "https://github.com/expirely-dev/expirely-cli/releases/download/v0.8.0/expirely_0.8.0_linux_arm64.tar.gz"
+      sha256 "74984c82403c36bfd5e943021792cf1862c3d04db979147ad0cec859f3ff68fb"
     end
     on_intel do
-      url "https://github.com/expirely-dev/expirely-cli/releases/download/v0.7.0/expirely_0.7.0_linux_amd64.tar.gz"
-      sha256 "edcff212ed5f2a1d248fc001c28639600fd429ee7d8366b71595656574928096"
+      url "https://github.com/expirely-dev/expirely-cli/releases/download/v0.8.0/expirely_0.8.0_linux_amd64.tar.gz"
+      sha256 "74ff99bbfb5e98f7e56c7f0b92c8dc1ba3e5051b46e9f44c640624ec28d966fd"
     end
   end
 
