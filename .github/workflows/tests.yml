@@ -15,7 +15,7 @@ jobs:
       contents: read
     steps:
       - uses: Homebrew/actions/setup-homebrew@61b401267256bb9c047d6d1481b176d5772a0ba7 # 2026.11.23.1
-      - run: brew trust --tap bycavii/tap
+      - run: brew trust --tap expirely-dev/tap
       - run: brew test-bot --only-tap-syntax
 
   install:
@@ -38,7 +38,7 @@ jobs:
           set -euo pipefail
           shopt -s nullglob
           for file in "$TAP_PATH"/Formula/*.rb; do
-            name="bycavii/tap/$(basename "$file" .rb)"
+            name="expirely-dev/tap/$(basename "$file" .rb)"
             brew install --formula "$name"
             brew test "$name"
           done

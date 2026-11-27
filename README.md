@@ -1,22 +1,22 @@
-# bycavii Homebrew tap
+# expirely Homebrew tap
 
-Homebrew formulae for the command-line tools of [bycavii](https://github.com/bycavii).
+Homebrew formulae for the command-line tools of [expirely](https://github.com/expirely-dev).
 
 ## Install
 
 ```sh
-brew install bycavii/tap/expirely
+brew install expirely-dev/tap/expirely
 ```
 
 Installing by the full name taps this repository and trusts only that formula. `brew upgrade` keeps it current.
 
 | Formula    | Tool |
 | ---------- | ---- |
-| `expirely` | [expirely](https://github.com/bycavii/expirely-cli) reports when the TLS certificates you serve expire |
+| `expirely` | [expirely](https://github.com/expirely-dev/expirely-cli) reports when the TLS certificates you serve expire |
 
 ## How a release gets here
 
-1. A release of the tool runs its `release.yml`, which builds the archives, attests their provenance, then starts `publish-release.yml` here through the bycavii GitHub App, whose only permission on this repository is to run workflows.
+1. A release of the tool runs its `release.yml`, which builds the archives, attests their provenance, then starts `publish-release.yml` here through the expirely-release GitHub App, whose only permission on this repository is to run workflows.
 2. `publish-release.yml` downloads the archives, checks each with `gh attestation verify` against the tool's release workflow and against `checksums.txt`, renders `Formula/<tool>.rb` from its template, runs `brew test-bot --only-tap-syntax`, `brew install` and `brew test`, and opens a pull request asking the person who released for review.
 3. Merging that pull request publishes the version. `tests.yml` then installs and tests every formula on macOS and Linux.
 

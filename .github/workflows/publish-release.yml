@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: Release tag of bycavii/expirely-cli, such as v0.6.0
+        description: Release tag of expirely-dev/expirely-cli, such as v0.6.0
         required: true
       reviewer:
         description: GitHub user asked to review the pull request
@@ -42,14 +42,14 @@ jobs:
         run: |
           set -euo pipefail
           ver="${VERSION#v}"
-          gh release download "$VERSION" --repo bycavii/expirely-cli --dir "$RUNNER_TEMP/release" \
+          gh release download "$VERSION" --repo expirely-dev/expirely-cli --dir "$RUNNER_TEMP/release" \
             --pattern checksums.txt \
             --pattern "expirely_${ver}_darwin_*.tar.gz" \
             --pattern "expirely_${ver}_linux_*.tar.gz"
           cd "$RUNNER_TEMP/release"
           for archive in expirely_*.tar.gz; do
-            gh attestation verify "$archive" --repo bycavii/expirely-cli \
-              --signer-workflow bycavii/expirely-cli/.github/workflows/release.yml
+            gh attestation verify "$archive" --repo Expirely-Dev/expirely-cli \
+              --signer-workflow Expirely-Dev/expirely-cli/.github/workflows/release.yml
           done
           sha256sum --check --ignore-missing --strict checksums.txt
 
@@ -84,10 +84,10 @@ jobs:
 
       - name: Check and install the formula
         run: |
-          brew trust --tap bycavii/tap
+          brew trust --tap expirely-dev/tap
           brew test-bot --only-tap-syntax
-          brew install --formula bycavii/tap/expirely
-          brew test bycavii/tap/expirely
+          brew install --formula expirely-dev/tap/expirely
+          brew test expirely-dev/tap/expirely
 
       - name: Open the pull request
         env:
@@ -108,5 +108,5 @@ jobs:
           git push origin "$branch"
           gh pr create --base main --head "$branch" \
             --title "expirely $VERSION" \
-            --body "Updates the expirely formula to [$VERSION](https://github.com/bycavii/expirely-cli/releases/tag/$VERSION). Every archive passed \`gh attestation verify\` against the expirely-cli release workflow, and the formula passed \`brew test-bot --only-tap-syntax\`, \`brew install\` and \`brew test\` on Linux." \
+            --body "Updates the expirely formula to [$VERSION](https://github.com/expirely-dev/expirely-cli/releases/tag/$VERSION). Every archive passed \`gh attestation verify\` against the expirely-cli release workflow, and the formula passed \`brew test-bot --only-tap-syntax\`, \`brew install\` and \`brew test\` on Linux." \
             ${REVIEWER:+--reviewer "$REVIEWER"}
